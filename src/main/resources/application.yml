@@ -1,0 +1,31 @@
+spring:
+  main:
+    web-application-type: reactive
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr([dd.trace_id=%X{dd.trace_id} dd.span_id=%X{dd.span_id} dd.trace_flags=%X{dd.trace_flags}]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+
+
+token:
+  jwt:
+    default:
+      jwk-set-url: ${JWK_SET_URL}
+      claims-validators:
+        issuer: ${AUTH_ISSUER}
+        audience: ${AUTH_AUDIENCE}
+    another:
+      jwk-set-url: ${JWK_SET_URL_2}
+      claims-validators:
+        issuer: ${AUTH_ISSUER_2}
+        audience: ${AUTH_AUDIENCE_2}
+
+routes:
+  folder: env
+ip:
+  based:
+    rate-limit: 200
